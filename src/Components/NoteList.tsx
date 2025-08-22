@@ -115,31 +115,33 @@ const NoteList = ({availableTags, notes}: NoteListProps) => {
         </div>
       </div>
 
-      <div className="flex-1 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="flex-1 grid content-start gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredNotes.map((note) => (
           <Link
             key={note.id}
             to={`/${note.id}/edit`}
-            className="group rounded-xl border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex h-full flex-col gap-2">
-              <span className="text-base font-medium text-gray-900">
-                {note.title || 'Untitled'}
-              </span>
-              <p className="text-sm text-gray-600">
-                {getExcerpt(note.markdown)}
-              </p>
-              {note.tags.length > 0 && (
-                <div className="mt-1 flex flex-wrap items-center gap-2">
-                  {note.tags.map((tag) => (
-                    <span
-                      key={tag.id}
-                      className="max-w-[140px] truncate rounded-md bg-indigo-100 px-2 py-1 text-xs text-indigo-700"
-                      title={tag.label}>
-                      {tag.label}
-                    </span>
-                  ))}
-                </div>
-              )}
+            className="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+            <div className="aspect-square p-4">
+              <div className="flex h-full flex-col gap-2">
+                <span className="block truncate text-base font-medium text-gray-900">
+                  {note.title || 'Untitled'}
+                </span>
+                <p className="text-sm text-gray-600 overflow-hidden">
+                  {getExcerpt(note.markdown)}
+                </p>
+                {note.tags.length > 0 && (
+                  <div className="mt-auto max-h-8 overflow-hidden flex flex-wrap items-center gap-2">
+                    {note.tags.map((tag) => (
+                      <span
+                        key={tag.id}
+                        className="max-w-[140px] truncate rounded-md bg-indigo-100 px-2 py-1 text-xs text-indigo-700"
+                        title={tag.label}>
+                        {tag.label}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </Link>
         ))}
