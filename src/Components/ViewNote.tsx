@@ -47,27 +47,27 @@ const ViewNote = ({notes}: ViewNoteProps) => {
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
-            h1: ({node, ...props}) => (
+            h1: (props: any) => (
               <h1 className="mb-3 mt-4 text-2xl font-semibold" {...props} />
             ),
-            h2: ({node, ...props}) => (
+            h2: (props: any) => (
               <h2 className="mb-2 mt-4 text-xl font-semibold" {...props} />
             ),
-            h3: ({node, ...props}) => (
+            h3: (props: any) => (
               <h3 className="mb-2 mt-3 text-lg font-semibold" {...props} />
             ),
-            p: ({node, ...props}) => (
+            p: (props: any) => (
               <p className="mb-3 leading-7 text-gray-800" {...props} />
             ),
-            ul: ({node, ...props}) => (
+            ul: (props: any) => (
               <ul className="mb-3 list-disc pl-6" {...props} />
             ),
-            ol: ({node, ...props}) => (
+            ol: (props: any) => (
               <ol className="mb-3 list-decimal pl-6" {...props} />
             ),
-            li: ({node, ...props}) => <li className="mb-1" {...props} />,
-            code: ({node, inline, ...props}) =>
-              inline ? (
+            li: (props: any) => <li className="mb-1" {...props} />,
+            code: (props: any) =>
+              props.inline ? (
                 <code
                   className="rounded bg-gray-100 px-1 py-0.5 text-[0.95em]"
                   {...props}
@@ -78,19 +78,19 @@ const ViewNote = ({notes}: ViewNoteProps) => {
                   {...props}
                 />
               ),
-            blockquote: ({node, ...props}) => (
+            blockquote: (props: any) => (
               <blockquote
                 className="mb-3 border-l-4 border-gray-300 pl-3 text-gray-700 italic"
                 {...props}
               />
             ),
-            a: ({node, ...props}) => (
+            a: (props: any) => (
               <a
                 className="text-indigo-600 underline hover:text-indigo-700"
                 {...props}
               />
             ),
-            hr: ({node, ...props}) => (
+            hr: (props: any) => (
               <hr className="my-4 border-gray-200" {...props} />
             ),
           }}>
